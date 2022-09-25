@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="FrameLayoutHeight">0dp</dimen>
+    <dimen name="LinearLayoutPaddingVertical">6dp</dimen>
+    <dimen name="MarginHorizontal">18dp</dimen>
+    <dimen name="TextViewMarginHorizontal">34dp</dimen>
+    <dimen name="TextViewTextSize">80sp</dimen>
+    <dimen name="ButtonZeroWidth">178dp</dimen>
+    <dimen name="ButtonZeroPaddingStart">32dp</dimen>
+</resources>

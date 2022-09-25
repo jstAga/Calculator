@@ -9,10 +9,19 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private Integer first, second;
+    private Double first;
+    private Double second;
     private Boolean isOperationClick;
     private String operation;
-    private Integer result;
+    private Double result;
+    private Integer resultInteger;
+    private Integer firstInteger;
+
+
+    // сделал first, second, result тип данных Double при нажатии на кнопку = программа проверяет,
+    // число целое или дробное, если число целое показывает результат в целом формате, иначе
+    // показывает результат в дробном формате
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,70 +74,113 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btn_a_c:
                 textView.setText("0");
-                first = 0;
-                second = 0;
+                first = 0.0;
+                second = 0.0;
                 break;
+
+            case R.id.btn_point:            // проверка есть ли точка в TextView
+                boolean noPoint = true;     // если ее нет, то она отображается в TextView
+                for (int i = 0; i < textView.getText().length(); i++) { // если точки нет,
+                    if (textView.getText().charAt(i) == '.') {      // то не отображается
+                        noPoint = false;
+                        break;
+                    }
+                }
+                if (noPoint) {
+                    textView.append(".");
+                }
         }
         isOperationClick = false;
     }
 
+
     public void onOperationClick(View view) {
         switch (view.getId()) {
             case R.id.btn_plus:
-                first = Integer.parseInt(textView.getText().toString());
+                first = Double.parseDouble(textView.getText().toString());
                 operation = "+";
                 break;
 
             case R.id.btn_minus:
-                first = Integer.parseInt(textView.getText().toString());
+                first = Double.parseDouble(textView.getText().toString());
                 operation = "-";
                 break;
 
             case R.id.btn_multiply:
-                first = Integer.parseInt(textView.getText().toString());
+                first = Double.parseDouble(textView.getText().toString());
                 operation = "*";
                 break;
 
             case R.id.btn_divide:
-                first = Integer.parseInt(textView.getText().toString());
+                first = Double.parseDouble(textView.getText().toString());
                 operation = "/";
                 break;
 
-            case R.id.btn_plus_minus:
-                first = Integer.parseInt(textView.getText().toString()) * -1;
-                textView.setText((first).toString());
+            case R.id.btn_plus_minus:   // проверка дробное ли число
+                first = Double.parseDouble(textView.getText().toString()) * -1;
+                firstInteger = first.intValue();
+                if (first % 1 == 0) {
+                    textView.setText((firstInteger).toString());
+                } else {
+                    textView.setText((first).toString());
+                }
                 break;
 
             case R.id.btn_percent:
-                first = Integer.parseInt(textView.getText().toString());
-                if (first % 1 == 0){
+                first = Double.parseDouble(textView.getText().toString());
                 first = first / 100;
-                textView.setText(first.toString());}
+                firstInteger = first.intValue();
+                if (first % 1 == 0) {
+                    textView.setText(firstInteger.toString());
+                } else {
+                    textView.setText(first.toString());
+                }
+                break;
 
             case R.id.btn_equal:
                 switch (operation) {
                     case "+":
-                        second = Integer.parseInt(textView.getText().toString());
+                        second = Double.parseDouble(textView.getText().toString());
                         result = first + second;
-                        textView.setText(result.toString());
+                        resultInteger = (int) (first + second);
+                        if (result % 1 == 0) {
+                            textView.setText(resultInteger.toString());
+                        } else {
+                            textView.setText(result.toString());
+                        }
                         break;
 
                     case "-":
-                        second = Integer.parseInt(textView.getText().toString());
+                        second = Double.parseDouble(textView.getText().toString());
                         result = first - second;
-                        textView.setText(result.toString());
+                        resultInteger = (int) (first - second);
+                        if (result % 1 == 0) {
+                            textView.setText(resultInteger.toString());
+                        } else {
+                            textView.setText(result.toString());
+                        }
                         break;
 
                     case "*":
-                        second = Integer.parseInt(textView.getText().toString());
+                        second = Double.parseDouble(textView.getText().toString());
                         result = first * second;
-                        textView.setText(result.toString());
+                        resultInteger = (int) (first * second);
+                        if (result % 1 == 0) {
+                            textView.setText(resultInteger.toString());
+                        } else {
+                            textView.setText(result.toString());
+                        }
                         break;
 
                     case "/":
-                        second = Integer.parseInt(textView.getText().toString());
+                        second = Double.parseDouble(textView.getText().toString());
                         result = first / second;
-                        textView.setText(result.toString());
+                        resultInteger = (int) (first / second);
+                        if (result % 1 == 0) {
+                            textView.setText(resultInteger.toString());
+                        } else {
+                            textView.setText(result.toString());
+                        }
                         break;
                 }
         }
@@ -145,5 +197,4 @@ public class MainActivity extends AppCompatActivity {
             textView.append(appendedNumber);
         }
     }
-
 }
