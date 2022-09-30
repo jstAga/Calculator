@@ -19,4 +19,16 @@
     <string name="seven">7</string>
     <string name="eight">8</string>
     <string name="nine">9</string>
+    <string name="secondActivity">Second Activity</string>
+
+    <string name="policies">Policies</string>
+    <string name="category">Product Category</string>
+    <string name="country">Origin Country</string>
+    <string name="brand">Brand</string>
+    <string name="current_policies">Current Policies</string>
+    <string name="export">Export as CSV</string>
+    <string name="country_of_origin">Country Of Origin</string>
+    <string name="brave">Brave</string>
+    <string name="policy">Policy</string>
+
 </resources>

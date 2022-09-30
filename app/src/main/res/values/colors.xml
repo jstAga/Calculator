@@ -11,5 +11,10 @@
     <color name="dark_gray">#262626</color>
     <color name="orange">#FD8D0E</color>
 
+    <color name="dark_blue">#31404D</color>
+    <color name="pink">#D0004B</color>
+    <color name="red">#E52744</color>
+    <color name="bg_color">#EFF3F5</color>
+    <color name="gray_point">#535353</color>
 
 </resources>

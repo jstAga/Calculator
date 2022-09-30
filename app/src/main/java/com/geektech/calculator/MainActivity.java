@@ -3,8 +3,11 @@ package com.geektech.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onNumberClick(View view) {
+        findViewById(R.id.second).setVisibility(View.GONE);
         switch (view.getId()) {
             case R.id.btn_zero:
                 setNumber("0");
@@ -140,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_equal:
                 switch (operation) {
                     case "+":
+                        if (findViewById(R.id.second).getVisibility() == View.GONE){
+                            findViewById(R.id.second).setVisibility(View.VISIBLE);
+                        }
+
                         second = Double.parseDouble(textView.getText().toString());
                         result = first + second;
                         resultInteger = (int) (first + second);
@@ -151,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case "-":
+                        if (findViewById(R.id.second).getVisibility() == View.GONE){
+                            findViewById(R.id.second).setVisibility(View.VISIBLE);
+                        }
                         second = Double.parseDouble(textView.getText().toString());
                         result = first - second;
                         resultInteger = (int) (first - second);
@@ -162,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case "*":
+                        if (findViewById(R.id.second).getVisibility() == View.GONE){
+                            findViewById(R.id.second).setVisibility(View.VISIBLE);
+                        }
                         second = Double.parseDouble(textView.getText().toString());
                         result = first * second;
                         resultInteger = (int) (first * second);
@@ -173,6 +187,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case "/":
+                        if (findViewById(R.id.second).getVisibility() == View.GONE){
+                            findViewById(R.id.second).setVisibility(View.VISIBLE);
+                        }
                         second = Double.parseDouble(textView.getText().toString());
                         result = first / second;
                         resultInteger = (int) (first / second);
@@ -196,5 +213,24 @@ public class MainActivity extends AppCompatActivity {
         } else {
             textView.append(appendedNumber);
         }
+    }
+
+    public void openSecond(View view) {
+        findViewById(R.id.second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, homework_screen.class);
+                String sendToSecond;
+                if (result % 1 == 0){
+                    sendToSecond = resultInteger.toString();
+                    intent.putExtra("result", sendToSecond);
+                } else {
+                    sendToSecond = result.toString();
+                    intent.putExtra("result", sendToSecond);
+                }
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

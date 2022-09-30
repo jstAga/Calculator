@@ -7,4 +7,7 @@
     <dimen name="TextViewTextSize">80sp</dimen>
     <dimen name="ButtonZeroWidth">178dp</dimen>
     <dimen name="ButtonZeroPaddingStart">32dp</dimen>
+
+<!--    second activity-->
+    <dimen name="basicMargin">15dp</dimen>
 </resources>
